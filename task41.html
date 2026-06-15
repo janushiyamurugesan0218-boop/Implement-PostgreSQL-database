@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PostgreSQL Database Demo</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f4f4;
+            padding:20px;
+        }
+        .container{
+            max-width:500px;
+            margin:auto;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+        }
+        input{
+            width:100%;
+            padding:10px;
+            margin:10px 0;
+        }
+        button{
+            padding:10px 20px;
+            background:#007bff;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
+        table{
+            width:100%;
+            margin-top:20px;
+            border-collapse:collapse;
+        }
+        th,td{
+            border:1px solid #ddd;
+            padding:8px;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>PostgreSQL Database Interface</h2>
+
+    <input type="text" id="name" placeholder="Enter Name">
+    <input type="email" id="email" placeholder="Enter Email">
+
+    <button onclick="addUser()">Add User</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="userTable"></tbody>
+    </table>
+</div>
+
+<script>
+function addUser() {
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+
+    if(name === "" || email === "") {
+        alert("Please fill all fields");
+        return;
+    }
+
+    let table = document.getElementById("userTable");
+
+    let row = table.insertRow();
+
+    row.insertCell(0).innerHTML = name;
+    row.insertCell(1).innerHTML = email;
+
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+}
+</script>
+
+</body>
+</html>
